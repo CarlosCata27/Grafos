@@ -4,6 +4,7 @@
 
 int main()
 {
+    int menu;
     char *est[42] = {"0 >> Insurgentes", "1 >> Cuauhtemoc", "2 >> Balderas", "3 >> Salto del Agua",
                      "4 >> Isabel la Catolica", "5 >> Pino Suarez",
                      "6 >> Merced", "7 >> Candelaria", "8 >> San Lazaro", "9 >> Moctezuma", "10 >> Balbuena",
@@ -51,17 +52,25 @@ int main()
     }
 
     printGraph(grafo,nombres);
+    do
+    {
+        puts("BIENVENIDO AL SISTEMA PARA BUSCAR LA MEJOR RUTA DEL METRO DE LA CDMX\n"
+             "Esta es la lista de las estaciones disponibles:\n");
+        mostrar(est);
+        puts("Seleccione una estacion de partida:\n");
+        scanf("%d",&partida);
+        puts("Seleccione una estacion de destino:\n");
+        scanf("%d",&destino);
 
-    puts("BIENVENIDO AL SISTEMA PARA BUSCAR LA MEJOR RUTA DEL METRO DE LA CDMX\n"
-         "Esta es la lista de las estaciones disponibles:\n");
-    mostrar(est);
-    puts("Seleccione una estacion de partida:\n");
-    scanf("%d",&partida);
-    puts("Seleccione una estacion de destino:\n");
-    scanf("%d",&destino);
+
+        printf("El recorrido de la estacion %d a la estacion %d es:",partida,destino);
+        dijkstra(pesos,destino,partida);
+        puts("Deseas seleccionar otra ruta\n"
+             "1 >> Si\n"
+             "0 >> No\n");
+             scanf("%d",&menu);
+    }while(menu!=0);
 
 
-    printf("El recorrido de la estacion %d a la estacion %d es:",partida,destino);
-    dijkstra(pesos,destino,partida);
     return 0;
 }
