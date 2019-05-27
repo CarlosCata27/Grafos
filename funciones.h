@@ -76,11 +76,11 @@ void printAdjMatrix(int arr[N][N]) {
     }
 }
 
-void dijkstra(int G[50][50],int n,int startnode)
+void dijkstra(int G[42][42],int n,int startnode)
 {
 
-    int cost[50][50],distance[50],pred[50];
-    int visited[50],count,mindistance,nextnode,i,j;
+    int cost[42][42],distance[42],pred[42];
+    int visited[42],count,mindistance,nextnode,i,j;
 
     for(i=0;i<n;i++)
         for(j=0;j<n;j++)
@@ -100,8 +100,7 @@ void dijkstra(int G[50][50],int n,int startnode)
     visited[startnode]=1;
     count=1;
 
-    while(count<n-1)
-    {
+    while(count<n-1){
         mindistance=INF;
         for(i=0;i<n;i++)
             if(distance[i]<mindistance&&!visited[i])
@@ -125,7 +124,7 @@ void dijkstra(int G[50][50],int n,int startnode)
         if(i!=startnode)
         {
             printf("\nDistancia del nodo %d >> %d",i,distance[i]);
-            printf("\nPath=%d",i);
+            printf("\nRecorrido = %d",i);
             j=i;
             do
             {

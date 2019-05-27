@@ -51,6 +51,15 @@ int main()
         }
     }
 
+    for (int k = 0; k < 50 ; ++k) {
+        pesos[vertices[k].src][vertices[k].dest] = vertices[k].segundos;
+        printf("[%d][%d] = %d\n",vertices[k].src,vertices[k].dest,vertices[k].segundos);
+        pesos[vertices[k].dest][vertices[k].src] = vertices[k].segundos;
+        printf("[%d][%d] = %d\n",vertices[k].dest,vertices[k].src,vertices[k].segundos);
+    }
+
+    printAdjMatrix(pesos);
+
     printGraph(grafo,nombres);
     do
     {
@@ -64,7 +73,7 @@ int main()
 
 
         printf("El recorrido de la estacion %d a la estacion %d es:",partida,destino);
-        dijkstra(pesos,destino,partida);
+        dijkstra(pesos,destino+1,partida);
         puts("Deseas seleccionar otra ruta\n"
              "1 >> Si\n"
              "0 >> No\n");
