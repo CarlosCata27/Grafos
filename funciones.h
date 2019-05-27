@@ -6,10 +6,10 @@
 #include <string.h>
 
 #define N 42
+#define INF 999
 
 typedef struct _Vertice{
     int src, dest, segundos;
-    char *nombre;
 }Vertice;
 
 typedef struct _Nodo {
@@ -34,7 +34,6 @@ Grafo* crearGrafo(Vertice vertices[], int size)
         int src = vertices[i].src;
         int dest = vertices[i].dest;
         int segundos = vertices[i].segundos;
-        char *nombre = vertices[i].nombre;
 
         Nodo* newNode = (Nodo*)malloc(sizeof(Nodo));
         newNode->dest = dest;
@@ -67,66 +66,73 @@ void printGraph(Grafo* graph, char *nombres[])
     }
 }
 
-void printAdjMatrix(int **arr, int size) {
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
+void printAdjMatrix(int arr[N][N]) {
+    puts("");
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
             printf("%d ", arr[i][j]);
         }
         printf("\n");
     }
 }
 
-void dijkstra(int **G,int n,int startnode) {
-    int cost[42][42], distance[42], pred[42];
-    int visited[42], count, mindistance, nextnode, i, j;
+void dijkstra(int G[50][50],int n,int startnode)
+{
 
-    for (i = 0; i < n; i++)
-        for (j = 0; j < n; j++)
-            if (G[i][j] == 0)
-                cost[i][j] = 999;
+    int cost[50][50],distance[50],pred[50];
+    int visited[50],count,mindistance,nextnode,i,j;
+
+    for(i=0;i<n;i++)
+        for(j=0;j<n;j++)
+            if(G[i][j]==0)
+                cost[i][j]=INF;
             else
-                cost[i][j] = G[i][j];
+                cost[i][j]=G[i][j];
 
-    for (i = 0; i < n; i++) {
-        distance[i] = cost[startnode][i];
-        pred[i] = startnode;
-        visited[i] = 0;
+    for(i=0;i<n;i++)
+    {
+        distance[i]=cost[startnode][i];
+        pred[i]=startnode;
+        visited[i]=0;
     }
 
-    distance[startnode] = 0;
-    visited[startnode] = 1;
-    count = 1;
+    distance[startnode]=0;
+    visited[startnode]=1;
+    count=1;
 
-    while (count < n - 1) {
-        mindistance = 9999;
-
-        for (i = 0; i < n; i++)
-            if (distance[i] < mindistance && !visited[i]) {
-                mindistance = distance[i];
-                nextnode = i;
+    while(count<n-1)
+    {
+        mindistance=INF;
+        for(i=0;i<n;i++)
+            if(distance[i]<mindistance&&!visited[i])
+            {
+                mindistance=distance[i];
+                nextnode=i;
             }
 
-        visited[nextnode] = 1;
-        for (i = 0; i < n; i++)
-            if (!visited[i])
-                if (mindistance + cost[nextnode][i] < distance[i]) {
-                    distance[i] = mindistance + cost[nextnode][i];
-                    pred[i] = nextnode;
+        visited[nextnode]=1;
+        for(i=0;i<n;i++)
+            if(!visited[i])
+                if(mindistance+cost[nextnode][i]<distance[i])
+                {
+                    distance[i]=mindistance+cost[nextnode][i];
+                    pred[i]=nextnode;
                 }
         count++;
     }
 
-    for (i = 0; i < n; i++) {
-        if (i != startnode) {
-            printf("\nDistancia del nodo %d a %d = %d",startnode, i, distance[i]);
-            printf("\nCamino = %d", i);
-            j = i;
-            do {
-                j = pred[j];
-                printf(" << %d", j);
-            } while (j != startnode);
+    for(i=0;i<n;i++)
+        if(i!=startnode)
+        {
+            printf("\nDistancia del nodo %d >> %d",i,distance[i]);
+            printf("\nPath=%d",i);
+            j=i;
+            do
+            {
+                j=pred[j];
+                printf("<-%d",j);
+            }while(j!=startnode);
         }
-    }
 }
 
 void mostrar(char **est) {
