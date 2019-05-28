@@ -40,13 +40,17 @@ int main()
         puts("Seleccione una estacion de destino:");
         scanf("%d",&destino);
 
-
-        printf("El recorrido ideal de la estacion %s a la estacion %s es:\n",nombres[partida],nombres[destino]);
-        dijkstra(AdjMatriz,destino+1,partida,nombres);
-        puts("\n\nDeseas seleccionar otra ruta\n"
-             "1 >> Si\n"
-             "0 >> No\n");
-             scanf("%d",&menu);
+        if(partida == destino){
+            puts("Ya estas en la estacion a la que quieres llegar");
+            menu =1;
+        }else{
+            printf("El recorrido ideal de la estacion %s a la estacion %s es:\n",nombres[partida],nombres[destino]);
+            dijkstra(AdjMatriz,destino+1,partida,nombres);
+            puts("\n\nDeseas seleccionar otra ruta\n"
+                 "1 >> Si\n"
+                 "0 >> No\n");
+            scanf("%d",&menu);
+        }
     }while(menu!=0);
     return 0;
 }
