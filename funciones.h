@@ -51,29 +51,6 @@ Grafo* crearGrafo(Vertice vertices[], int size)
     return graph;
 }
 
-void printGraph(Grafo* graph, char *nombres[]){
-    int i;
-    for (i = 0; i < N; i++)
-    {
-        Nodo* ptr = graph->inicio[i];
-        while (ptr != NULL)
-        {
-            printf("%s >> %s t:%ds  ",nombres[i], nombres[ptr->dest], ptr->segundos);
-            ptr = ptr->sig;
-        }
-        printf("\n");
-    }
-}
-
-void printAdjMatrix(int arr[N][N]) {
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            printf("%d ", arr[i][j]);
-        }
-        printf("\n");
-    }
-}
-
 void dijkstra(int G[42][42],int n,int startnode,char *nombres[42]){
 
     int cost[42][42],distance[42],pred[42];

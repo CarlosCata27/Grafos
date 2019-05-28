@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/MrJua/Desktop/Airport/Grafos/funciones.h
+C:/Users/Carlos/Desktop/Grafos/funciones.h
 stdio.h
 -
 stdlib.h
@@ -14,11 +14,11 @@ stdlib.h
 string.h
 -
 
-C:/Users/MrJua/Desktop/Airport/Grafos/main.c
+C:/Users/Carlos/Desktop/Grafos/main.c
 stdio.h
 -
 stdlib.h
 -
 funciones.h
-C:/Users/MrJua/Desktop/Airport/Grafos/funciones.h
+C:/Users/Carlos/Desktop/Grafos/funciones.h
 
