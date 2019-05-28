@@ -31,9 +31,6 @@ int main()
         AdjMatriz[vertices[k].dest][vertices[k].src] = vertices[k].segundos;
     }
 
-    //printAdjMatrix(AdjMatriz);
-    //printGraph(grafo,nombres);
-
     do{
         puts("BIENVENIDO AL SISTEMA PARA BUSCAR LA MEJOR RUTA DEL METRO DE LA CDMX\n"
              "Esta es la lista de las estaciones disponibles:\n");
