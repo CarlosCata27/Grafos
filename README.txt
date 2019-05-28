@@ -24,7 +24,3 @@ Build 0.4.0
 ++Implementacion del Algoritmo de Dijkstra
 --Pequeños detalles en cuanto a su funcionalidad
 ++Implementacion del menu de usuario
-
-Build 0.4.1
-++El algoritmo dijkstra esta implementado
---Al momento de buscar una ruta que el punto de destino sea menor que el punto de partida, los recorridos fallan
