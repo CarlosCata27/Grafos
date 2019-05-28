@@ -6,7 +6,7 @@
 #include <string.h>
 
 #define N 42
-#define INF 999
+#define INF 9999
 
 typedef struct _Vertice{
     int src, dest, segundos;
@@ -51,8 +51,7 @@ Grafo* crearGrafo(Vertice vertices[], int size)
     return graph;
 }
 
-void printGraph(Grafo* graph, char *nombres[])
-{
+void printGraph(Grafo* graph, char *nombres[]){
     int i;
     for (i = 0; i < N; i++)
     {
@@ -67,7 +66,6 @@ void printGraph(Grafo* graph, char *nombres[])
 }
 
 void printAdjMatrix(int arr[N][N]) {
-    puts("");
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             printf("%d ", arr[i][j]);
@@ -76,21 +74,20 @@ void printAdjMatrix(int arr[N][N]) {
     }
 }
 
-void dijkstra(int G[42][42],int n,int startnode)
-{
+void dijkstra(int G[42][42],int n,int startnode,char *nombres[42]){
 
     int cost[42][42],distance[42],pred[42];
     int visited[42],count,mindistance,nextnode,i,j;
 
-    for(i=0;i<n;i++)
-        for(j=0;j<n;j++)
+    for(i=0;i<42;i++)
+        for(int j=0;j<42;j++)
             if(G[i][j]==0)
                 cost[i][j]=INF;
             else
                 cost[i][j]=G[i][j];
 
-    for(i=0;i<n;i++)
-    {
+
+    for(i=0;i<42;i++){
         distance[i]=cost[startnode][i];
         pred[i]=startnode;
         visited[i]=0;
@@ -101,17 +98,16 @@ void dijkstra(int G[42][42],int n,int startnode)
     visited[startnode]=1;
     count=1;
 
-    while(count<n-1){
+    while(count<42-1){
         mindistance=INF;
-        for(i=0;i<n;i++)
-            if(distance[i]<mindistance&&!visited[i])
-            {
+        for(i=0;i<42;i++)
+            if(distance[i]<mindistance&&!visited[i]){
                 mindistance=distance[i];
                 nextnode=i;
             }
 
         visited[nextnode]=1;
-        for(i=0;i<n;i++)
+        for(i=0;i<42;i++)
             if(!visited[i])
                 if(mindistance+cost[nextnode][i]<distance[i])
                 {
@@ -124,20 +120,23 @@ void dijkstra(int G[42][42],int n,int startnode)
     for(i=0;i<n;i++)
         if(i!=startnode)
         {
-            printf("\nDistancia del nodo %d >> %d",i,distance[i]);
-            printf("\nRecorrido = %d",i);
-            j=i;
-            do
-            {
-                j=pred[j];
-                printf("<-%d",j);
-            }while(j!=startnode);
+            if(i == n-1){
+                printf("Distancia del nodo %s a %s >> %ds", nombres[startnode], nombres[i], distance[i]);
+                printf("\nRecorrido = %s", nombres[i]);
+            }
+            j = i;
+            do {
+                j = pred[j];
+                if(i == n-1) {
+                    printf("<-%s", nombres[j]);
+                }
+            } while (j != startnode);
         }
 }
 
 void mostrar(char **est) {
     for (int i = 0; i < 42; ++i) {
-        printf("%s\n", est[i]);
+        printf("%d >> %s\n",i, est[i]);
     }
 }
 
