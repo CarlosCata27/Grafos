@@ -5,6 +5,17 @@
 int main()
 {
     int menu;
+    char *est[42] = {"0 >> Insurgentes", "1 >> Cuauhtemoc", "2 >> Balderas", "3 >> Salto del Agua",
+                     "4 >> Isabel la Catolica", "5 >> Pino Suarez",
+                     "6 >> Merced", "7 >> Candelaria", "8 >> San Lazaro", "9 >> Moctezuma", "10 >> Balbuena",
+                     "11 >> Normal", "12 >> San Cosme", "13 >> Revolucion", "14 >> Hidalgo",
+                     "15 >> Bellas Artes", "16 >> Allende", "17 >> Zocalo", "18 >> San Antonio Abad", "19 >> Chabacano",
+                     "20 >> Viaducto", "21 >> Tlatelolco",
+                     "22 >> Guerrero", "23 >> Juarez", "24 >> Ninos Heroes", "25 >> Hospital General",
+                     "26 >> Centro Medico", "27 >> Canal del Norte", "28 >> Morelos", "29 >> Fray Servando",
+                     "30 >> Jamaica", "31 >> Santa Anita", "32 >> Garibaldi/Lagunilla", "33 >> San Juan de Letran",
+                     "34 >> Doctores", "35 >> Obrera", "36 >> La Viga", "37 >> Chilpancingo",
+                     "38 >> Lazaro Cardenas", "39 >> Buenavista", "40 >> Lagunilla", "41 >> Tepito"};
     char *nombres[42] = {"Insurgentes", "Cuauhtemoc", "Balderas", "Salto del Agua", "Isabel la Catolica", "Pino Suarez",
                          "Merced", "Candelaria", "San Lazaro", "Moctezuma", "Balbuena",
                          "Normal", "San Cosme", "Revolucion", "Hidalgo","Bellas Artes", "Allende", "Zocalo", "San Antonio Abad",
@@ -12,20 +23,9 @@ int main()
                          "Centro Medico", "Canal del Norte", "Morelos", "Fray Servando","Jamaica", "Santa Anita", "Garibaldi/Lagunilla",
                          "San Juan de Letran","Doctores", "Obrera", "La Viga", "Chilpancingo","Lazaro Cardenas", "Buenavista",
                          "Lagunilla", "Tepito"};
-    char *est[42] = {"a >> Insurgentes", "b >> Cuauhtemoc", "c >> Balderas", "d >> Salto del Agua",
-                     "e >> Isabel la Catolica", "f >> Pino Suarez",
-                     "g >> Merced", "h >> Candelaria", "i >> San Lazaro", "j >> Moctezuma", "k >> Balbuena",
-                     "l >> Normal", "m >> San Cosme", "n >> Revolucion", "o >> Hidalgo",
-                     "p >> Bellas Artes", "q >> Allende", "r >> Zocalo", "s >> San Antonio Abad",
-                     "t >> Chabacano","u >> Viaducto", "v >> Tlatelolco",
-                     "w >> Guerrero", "x >> Juarez", "y >> Ninos Heroes", "z >> Hospital General",
-                     "A >> Centro Medico", "B >> Canal del Norte", "C >> Morelos", "D >> Fray Servando",
-                     "E >> Jamaica", "F >> Santa Anita", "G >> Garibaldi/Lagunilla", "H >> San Juan de Letran",
-                     "I >> Doctores", "J >> Obrera", "K >> La Viga", "L >> Chilpancingo",
-                     "M >> Lazaro Cardenas", "N >> Buenavista", "O >> Lagunilla", "P >> Tepito"};
     int destino,partida;
 
-    Vertice puentes[] = {{0,1,75},{1,2,62},{2,3,58},{3,4,55},{4,5,95},
+    Vertice vertices[] = {{0,1,75},{1,2,62},{2,3,58},{3,4,55},{4,5,95},
                           {5,6,110},{6,7,87},{7,8,93},{8,9,118},{9,10,82},
                           {11,12,63},{12,13,53},{13,14,60},{14,15,43},{15,16,55},
                           {16,17,62},{17,5,59},{5,18,75},{18,19,108},{19,20,80},
@@ -37,11 +37,13 @@ int main()
                           {22,32,115},{32,40,100},{40,41,80},{41,28,75},{28,8,83}
     };
 
-    int size = sizeof(puentes)/ sizeof(puentes[0]);
+    int size = sizeof(vertices)/ sizeof(vertices[0]);
 
     printf("%d",size);
 
-    Grafo *grafo = crearGrafo(puentes, size);
+    Grafo *grafo = crearGrafo(vertices, size);
+
+    printf("AAAAA LA COLA DE DANIELAAAA RICO RICO");
 
     int pesos[42][42];
 
@@ -51,20 +53,16 @@ int main()
         }
     }
 
-<<<<<<< HEAD
     for (int k = 0; k < 50 ; ++k) {
-        pesos[puentes[k].src][puentes[k].dest] = puentes[k].segundos;
-        printf("[%d][%d] = %d\n",puentes[k].src,puentes[k].dest,puentes[k].segundos);
-        pesos[puentes[k].dest][puentes[k].src] = puentes[k].segundos;
-        printf("[%d][%d] = %d\n",puentes[k].dest,puentes[k].src,puentes[k].segundos);
+        pesos[vertices[k].src][vertices[k].dest] = vertices[k].segundos;
+        printf("[%d][%d] = %d\n",vertices[k].src,vertices[k].dest,vertices[k].segundos);
+        pesos[vertices[k].dest][vertices[k].src] = vertices[k].segundos;
+        printf("[%d][%d] = %d\n",vertices[k].dest,vertices[k].src,vertices[k].segundos);
     }
 
     printAdjMatrix(pesos);
 
-    floydWarshall(pesos);
-=======
     printGraph(grafo,nombres);
->>>>>>> parent of ae8b937... Build 0.4.1
     do
     {
         puts("BIENVENIDO AL SISTEMA PARA BUSCAR LA MEJOR RUTA DEL METRO DE LA CDMX\n"
@@ -77,10 +75,7 @@ int main()
 
 
         printf("El recorrido de la estacion %d a la estacion %d es:",partida,destino);
-<<<<<<< HEAD
-=======
-        dijkstra(pesos,destino,partida);
->>>>>>> parent of ae8b937... Build 0.4.1
+        dijkstra(pesos,destino+1,partida);
         puts("Deseas seleccionar otra ruta\n"
              "1 >> Si\n"
              "0 >> No\n");
