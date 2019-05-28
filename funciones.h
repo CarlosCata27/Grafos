@@ -75,6 +75,7 @@ void printAdjMatrix(int arr[N][N]) {
     }
 }
 
+<<<<<<< HEAD
 int minDist(int dist[],int sptSet[]){
     int min = INT_MAX, minI = 0;
 
@@ -86,6 +87,13 @@ int minDist(int dist[],int sptSet[]){
     }
     return minI;
 }
+=======
+void dijkstra(int G[50][50],int n,int startnode)
+{
+
+    int cost[50][50],distance[50],pred[50];
+    int visited[50],count,mindistance,nextnode,i,j;
+>>>>>>> parent of ae8b937... Build 0.4.1
 
 void dibujarCamino(int parent[], int dest){
     if(parent[dest]==-1){
@@ -109,9 +117,21 @@ void dibujarCamino(int parent[], int dest){
 /*void Dijkstra(int AdjMatrix[N][N],int partida){
     int distancia[N];
 
+<<<<<<< HEAD
     int sptSet[N];
 
     int parent[N];
+=======
+    while(count<n-1)
+    {
+        mindistance=INF;
+        for(i=0;i<n;i++)
+            if(distance[i]<mindistance&&!visited[i])
+            {
+                mindistance=distance[i];
+                nextnode=i;
+            }
+>>>>>>> parent of ae8b937... Build 0.4.1
 
     for (int i = 0; i < N ; ++i) {
         parent[0]=-1;
@@ -119,6 +139,7 @@ void dibujarCamino(int parent[], int dest){
         sptSet[i] = 0;
     }
 
+<<<<<<< HEAD
     distancia[partida] = 0;
 
     for (int j = 0; j < N-1; ++j) {
@@ -129,6 +150,19 @@ void dibujarCamino(int parent[], int dest){
                 parent[n] = u;
                 distancia[n]= distancia[u] + AdjMatrix[u][n];
             }
+=======
+    for(i=0;i<n;i++)
+        if(i!=startnode)
+        {
+            printf("\nDistancia del nodo %d >> %d",i,distance[i]);
+            printf("\nPath=%d",i);
+            j=i;
+            do
+            {
+                j=pred[j];
+                printf("<-%d",j);
+            }while(j!=startnode);
+>>>>>>> parent of ae8b937... Build 0.4.1
         }
     }
 

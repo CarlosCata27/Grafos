@@ -51,6 +51,7 @@ int main()
         }
     }
 
+<<<<<<< HEAD
     for (int k = 0; k < 50 ; ++k) {
         pesos[puentes[k].src][puentes[k].dest] = puentes[k].segundos;
         printf("[%d][%d] = %d\n",puentes[k].src,puentes[k].dest,puentes[k].segundos);
@@ -61,6 +62,9 @@ int main()
     printAdjMatrix(pesos);
 
     floydWarshall(pesos);
+=======
+    printGraph(grafo,nombres);
+>>>>>>> parent of ae8b937... Build 0.4.1
     do
     {
         puts("BIENVENIDO AL SISTEMA PARA BUSCAR LA MEJOR RUTA DEL METRO DE LA CDMX\n"
@@ -73,6 +77,10 @@ int main()
 
 
         printf("El recorrido de la estacion %d a la estacion %d es:",partida,destino);
+<<<<<<< HEAD
+=======
+        dijkstra(pesos,destino,partida);
+>>>>>>> parent of ae8b937... Build 0.4.1
         puts("Deseas seleccionar otra ruta\n"
              "1 >> Si\n"
              "0 >> No\n");

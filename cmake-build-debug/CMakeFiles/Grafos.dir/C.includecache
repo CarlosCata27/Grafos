@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+E:/Escuela/Estructura_de_datos/Grafos/funciones.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+
+E:/Escuela/Estructura_de_datos/Grafos/main.c
+stdio.h
+-
+stdlib.h
+-
+funciones.h
+E:/Escuela/Estructura_de_datos/Grafos/funciones.h
+
