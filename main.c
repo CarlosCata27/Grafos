@@ -43,6 +43,8 @@ int main()
 
     Grafo *grafo = crearGrafo(vertices, size);
 
+    printf("AAAAA LA COLA DE DANIELAAAA RICO RICO");
+
     int pesos[42][42];
 
     for (int j = 0; j<42 ; ++j) {
